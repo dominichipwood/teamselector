@@ -1,0 +1,56 @@
+from itertools import combinations      #pdic=player dictionary names change to protect identities
+pdic={"p1" : 4 , "p2" : 5, "p3":2, "p4":1, "p5":2, "p6":0, "p7":0, "p8":1, "p9":-1, "p10":3, "p11" : 5, "p12": -4, "p13" : 5 , "p14": 0 , "p15":2, "p16":-1, "p17" : 2, "p18" : 2, "p19" : 3, "p20": 1, "p21": 4, "p22":3}
+p1=input("Player 1?")
+if p1 not in pdic:
+    raise NameError
+p2=input("Player 2?")
+if p2 not in pdic:
+    raise NameError
+p3=input("Player 3?")
+if p3 not in pdic:
+    raise NameError
+p4=input("Player 4?")
+if p4 not in pdic:
+    raise NameError
+p5=input("Player 5?")
+if p5 not in pdic:
+    raise NameError
+p6=input("Player 6?")
+if p6 not in pdic:
+    raise NameError
+p7=input("Player 7?")
+if p7 not in pdic:
+    raise NameError
+p8=input("Player 8?")
+if p8 not in pdic:
+    raise NameError
+p9=input("Player 9?")
+if p9 not in pdic:
+    raise NameError
+p10=input("Player 10?")
+if p10 not in pdic:
+    raise NameError
+players=[p1,p2,p3,p4,p5,p6,p7,p8,p9,p10]
+TT=sum(pdic[player] for player in players)              # total talent
+teams=list(combinations(players, 5))
+teams=teams[:int(len(teams)/2)-1]   #only need to do half
+def fairness(team):
+    ts=sum(pdic[p] for p in team) #team score
+    return abs(TT-2*ts)
+fair_teams=[]
+aim=0
+while fair_teams==[]:
+    for team in teams:
+        if fairness(team)==aim:
+            fair_teams.append(team)
+    aim+=1
+def team2(a):
+    return [ p for p in players if not p in a]
+print("There are {} options with a difference of {}. The teams can be . . .".format(len(fair_teams),aim-1))
+for team in fair_teams:
+    print("{} verses {}".format(team,team2(team)))
+print("The total quality is {}".format(TT))
+
+
+
+
